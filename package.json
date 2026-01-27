@@ -20,7 +20,12 @@
         "middleware"
     ],
     "scripts": {
-        "build": "tsup src/index.ts --format esm,cjs --dts",
+        "build": "pnpm exec tsup src/index.ts --format esm,cjs --dts",
         "prepublishOnly": "pnpm build"
+    },
+    "devDependencies": {
+        "@types/node": "^25.0.10",
+        "tsup": "^8.5.1",
+        "typescript": "^5.9.3"
     }
 }
