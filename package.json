@@ -2,11 +2,23 @@
     "name": "csp-merge",
     "version": "0.1.2",
     "type": "module",
+    "description": "Merge Content Security Policy (CSP) strings safely without breaking existing rules.",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "exports": {
         ".": "./dist/index.js"
     },
+    "license": "MIT",
+    "keywords": [
+        "csp",
+        "content-security-policy",
+        "security",
+        "headers",
+        "merge",
+        "nextjs",
+        "express",
+        "middleware"
+    ],
     "scripts": {
         "build": "tsup src/index.ts --format esm,cjs --dts",
         "prepublishOnly": "pnpm build"

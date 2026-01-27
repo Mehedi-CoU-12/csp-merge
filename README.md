@@ -1,22 +1,10 @@
-# csp-merge
-
-Merge Content Security Policy (CSP) strings safely without breaking existing rules.
-
-## Why?
-
-Manually overriding CSP headers is dangerous and error-prone. This package merges CSP directives intelligently, combining values where appropriate and handling special cases correctly.
-
-Perfect for Next.js, Express, and any framework where you need to modify CSP headers dynamically.
-
-## Installation
+# Install
 
 ```bash
 npm install csp-merge
 ```
 
 ## Usage
-
-### Basic
 
 ```javascript
 import { mergeCsp } from "csp-merge";
@@ -27,18 +15,6 @@ const incoming = "script-src https://cdn.example.com; img-src *";
 const merged = mergeCsp(existing, incoming);
 // "default-src 'self'; script-src 'unsafe-inline' https://cdn.example.com; img-src *"
 ```
-
-<!-- ### Express
-```javascript
-app.use((req, res, next) => {
-  const current = res.getHeader('Content-Security-Policy');
-  const updated = mergeCsp(current, "frame-ancestors 'self' https://example.com");
-  res.setHeader('Content-Security-Policy', updated);
-  next();
-});
-``` -->
-
-### Next.js Middleware
 
 ```javascript
 import { mergeCsp } from "csp-merge";
@@ -55,6 +31,32 @@ export function middleware(request) {
     return response;
 }
 ```
+
+# csp-merge
+
+Merge Content Security Policy (CSP) strings safely without breaking existing rules.
+
+## Why?
+
+Manually overriding CSP headers is dangerous and error-prone. This package merges CSP directives intelligently, combining values where appropriate and handling special cases correctly.
+
+Perfect for Next.js, Express, and any framework where you need to modify CSP headers dynamically.
+
+## Installation
+
+### Basic
+
+<!-- ### Express
+```javascript
+app.use((req, res, next) => {
+  const current = res.getHeader('Content-Security-Policy');
+  const updated = mergeCsp(current, "frame-ancestors 'self' https://example.com");
+  res.setHeader('Content-Security-Policy', updated);
+  next();
+});
+``` -->
+
+### Next.js Middleware
 
 ## How it Works
 
