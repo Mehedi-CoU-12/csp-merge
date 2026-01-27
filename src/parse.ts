@@ -2,10 +2,10 @@ export function parseCsp(csp: string): Record<string, Set<string>> {
     const result: Record<string, Set<string>> = {};
 
     for (const part of csp.split(";")) {
-        const trimmmed = part.trim();
-        if (!trimmmed) continue;
+        const trimmed = part.trim();
+        if (!trimmed) continue;
 
-        const [directive, ...values] = trimmmed.split(/\s+/);
+        const [directive, ...values] = trimmed.split(/\s+/);
 
         if (!result[directive]) {
             result[directive] = new Set();
