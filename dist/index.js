@@ -1,5 +1,6 @@
 // src/merge.ts
 var SINGLE_VALUE_DIRECTIVES = /* @__PURE__ */ new Set(["report-uri", "report-to"]);
+var SPECIAL_DIRECTIVES = /* @__PURE__ */ new Set(["frame-ancestors"]);
 function mergeCspObjects(a, b) {
   const result = { ...a };
   for (const key in b) {
@@ -9,6 +10,16 @@ function mergeCspObjects(a, b) {
     }
     if (SINGLE_VALUE_DIRECTIVES.has(key)) {
       result[key] = new Set(b[key]);
+    } else if (SPECIAL_DIRECTIVES.has(key)) {
+      const incoming = b[key];
+      if (incoming.has("'none'")) {
+        result[key] = /* @__PURE__ */ new Set(["'none'"]);
+      } else {
+        result[key] = /* @__PURE__ */ new Set([
+          ...Array.from(result[key]).filter((v) => v !== "'none'"),
+          ...incoming
+        ]);
+      }
     } else {
       b[key].forEach((v) => result[key].add(v));
     }
@@ -20,9 +31,9 @@ function mergeCspObjects(a, b) {
 function parseCsp(csp) {
   const result = {};
   for (const part of csp.split(";")) {
-    const trimmmed = part.trim();
-    if (!trimmmed) continue;
-    const [directive, ...values] = trimmmed.split(/\s+/);
+    const trimmed = part.trim();
+    if (!trimmed) continue;
+    const [directive, ...values] = trimmed.split(/\s+/);
     if (!result[directive]) {
       result[directive] = /* @__PURE__ */ new Set();
     }
