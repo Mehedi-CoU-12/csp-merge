@@ -1,6 +1,6 @@
 {
     "name": "csp-merge",
-    "version": "0.1.6",
+    "version": "0.1.7",
     "type": "module",
     "description": "Merge Content Security Policy (CSP) strings safely without breaking existing rules.",
     "main": "dist/index.js",
