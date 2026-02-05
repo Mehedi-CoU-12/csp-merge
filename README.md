@@ -42,8 +42,6 @@ Manually overriding CSP headers is dangerous and error-prone. This package merge
 
 Perfect for Next.js, Express, and any framework where you need to modify CSP headers dynamically.
 
-## Installation
-
 ### Basic
 
 <!-- ### Express
