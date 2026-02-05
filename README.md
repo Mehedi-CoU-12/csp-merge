@@ -42,19 +42,19 @@ Manually overriding CSP headers is dangerous and error-prone. This package merge
 
 Perfect for Next.js, Express, and any framework where you need to modify CSP headers dynamically.
 
-### Basic
+### Express
 
-<!-- ### Express
 ```javascript
 app.use((req, res, next) => {
-  const current = res.getHeader('Content-Security-Policy');
-  const updated = mergeCsp(current, "frame-ancestors 'self' https://example.com");
-  res.setHeader('Content-Security-Policy', updated);
-  next();
+    const current = res.getHeader("Content-Security-Policy");
+    const updated = mergeCsp(
+        current,
+        "frame-ancestors 'self' https://example.com",
+    );
+    res.setHeader("Content-Security-Policy", updated);
+    next();
 });
-``` -->
-
-### Next.js Middleware
+```
 
 ## How it Works
 
