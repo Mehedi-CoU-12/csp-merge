@@ -1,5 +1,10 @@
 # csp-merge
 
+[![NPM version](https://img.shields.io/npm/v/csp-merge.svg?style=flat)](https://www.npmjs.com/package/csp-merge)
+[![NPM downloads](https://img.shields.io/npm/dm/csp-merge.svg?style=flat)](https://www.npmjs.com/package/csp-merge)
+[![Dependency Status](https://img.shields.io/meehdi_cou_48/csp-header.svg?style=flat)](https://mehedi-dm.org/meehdi_cou_48/csp-merge)
+[![License](https://img.shields.io/npm/l/csp-merge.svg?style=flat)](https://www.npmjs.com/package/csp-merge)
+
 Merge Content Security Policy (CSP) strings safely without breaking existing rules.
 
 A small utility for intelligently merging CSP headers instead of overwriting them — perfect for Next.js, Express, and any Node.js framework.
@@ -115,7 +120,9 @@ const basePolicy = parseCsp("default-src 'self'; script-src 'unsafe-inline'");
 // }
 
 // Parse another policy
-const additionalPolicy = parseCsp("script-src https://cdn.example.com; img-src *");
+const additionalPolicy = parseCsp(
+    "script-src https://cdn.example.com; img-src *",
+);
 
 // Merge two parsed CSP objects
 const merged = mergeCspObjects(basePolicy, additionalPolicy);
@@ -133,8 +140,8 @@ Full TypeScript types included:
 import { mergeCsp, parseCsp, stringifyCsp } from "csp-merge";
 
 const policy: string = mergeCsp(
-  "default-src 'self'",
-  "script-src https://example.com"
+    "default-src 'self'",
+    "script-src https://example.com",
 );
 
 const parsed: Map<string, Set<string>> = parseCsp(policy);
